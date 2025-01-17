@@ -1,3 +1,0 @@
--- INSERT INTO products (title, price, description, category, image_url)
--- VALUES 
--- ('Product 1', 10.99, 'Description for product 1', 'Category 1', 'https://example.com/image1.jpg'),
