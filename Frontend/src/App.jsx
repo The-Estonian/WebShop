@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import styles from './App.module.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [itemList, setItemList] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:8080/api/products')
+      .then((response) => response.json())
+      .then((data) => {
+        setItemList(data);
+      })
+      .catch((error) => console.error('Error fetching data:', error));
+  }, []);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {itemList?.map((item, index) => {
+        return (
+          <div className={styles.product} key={index}>
+            <img className={styles.product_img} src={item.image} />
+            <div className={styles.product_info}>
+              <p>{item.title}</p>
+              <p>{item.price}</p>
+              <p>{item.description}</p>
+              <p>{item.category}</p>
+            </div>
+          </div>
+        );
+      })}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
