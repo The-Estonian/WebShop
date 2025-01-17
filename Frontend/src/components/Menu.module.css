@@ -1,0 +1,17 @@
+.menu {
+  display: flex;
+  margin: auto;
+}
+
+.buttons {
+  margin: 0.5rem 0.1rem;
+  padding: 1rem;
+  border: 1px solid black;
+  cursor: pointer;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.buttons:hover {
+  color: white;
+  background: black;
+}

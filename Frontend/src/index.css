@@ -1,6 +1,6 @@
 #root{
     display: flex;
-    width: 90%;
+    flex-direction: column;
+    width: 85%;
     margin: auto;
-    flex-flow: wrap;
 }
