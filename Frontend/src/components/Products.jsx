@@ -49,7 +49,7 @@ const Products = () => {
             <p>{itemInfo.description}</p>
             <p>{itemInfo.category}</p>
           </div>
-          <span className={styles.back} onClick={showItemsSwitch}>
+          <span className={styles.buttons} onClick={showItemsSwitch}>
             Back
           </span>
         </div>

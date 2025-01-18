@@ -7,7 +7,7 @@ Testing out Java Spring Boot as API backend for a simple ecommerce webshop where
 ### Tech Stack:
 
 - **Frontend**: React
-- **Backend**: Java
+- **Backend**: Java Spring Boot Maven
 - **Database**: PostgreSQL
 
 ## Table of Contents
@@ -65,7 +65,9 @@ To run the project locally, follow these steps:
    ```
 
 4. **Fill the DB**:
+
    - Open the third terminal
+
    ```bash
     cd PostgreSQL
 
@@ -74,7 +76,7 @@ To run the project locally, follow these steps:
 
     # This will run a python script to pull dummy items from internet and push them into the PostgreSQL DB
     run the bootstreapDB.py
-    ```
+   ```
 
 Note:
 
@@ -105,4 +107,7 @@ For any questions or suggestions, feel free to contact us directly at `Kood / JÃ
 The project is still a work in progress, has some bugs and could also hold more simple games in the future with some new minor bugs.
 
 _Authors: [Jaanus Saar](https://01.kood.tech/git/jsaar)_
+
+```
+
 ```
