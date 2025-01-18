@@ -67,18 +67,14 @@ To run the project locally, follow these steps:
 4. **Fill the DB**:
    - Open the third terminal
    ```bash
-   cd PostgreSQL
-   ```
+    cd PostgreSQL
 
-# This will download and run PostgreSQL DB in Docker
+    # This will download and run PostgreSQL DB in Docker
+    run the build.bat script
 
-run the build.bat script
-
-# This will run a python script to pull dummy items from internet and push them into the PostgreSQL DB
-
-run the bootstreapDB.py
-
-```
+    # This will run a python script to pull dummy items from internet and push them into the PostgreSQL DB
+    run the bootstreapDB.py
+    ```
 
 Note:
 
