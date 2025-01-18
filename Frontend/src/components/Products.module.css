@@ -1,0 +1,22 @@
+
+.product_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem 0;
+  margin: 2rem auto;
+  width: 80%;
+}
+
+.product_img {
+  height: 20rem;
+  width: auto;
+  margin: auto;
+}
+
+.productList {
+  margin-top: 2rem;
+  display: flex;
+  flex-flow: wrap;
+}

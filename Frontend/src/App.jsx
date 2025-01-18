@@ -1,62 +1,18 @@
-import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Card from './components/Card';
 import Menu from './components/Menu';
-
-import styles from './App.module.css';
+import Products from './components/Products';
 
 function App() {
-  const [itemList, setItemList] = useState([]);
-  const [showItems, setShowItems] = useState(true);
-  const [itemInfo, setItemInfo] = useState({});
-  useEffect(() => {
-    fetch('http://localhost:8080/api/products')
-      .then((response) => response.json())
-      .then((data) => {
-        setItemList(data);
-      })
-      .catch((error) => console.error('Error fetching data:', error));
-  }, []);
-
-  const showItemsSwitch = () => {
-    setShowItems(!showItems);
-  };
-
-  const setActiveItem = (item) => {
-    setItemInfo(item);
-  };
-
   return (
-    <>
+    <Router>
       <Menu />
-      <div className={styles.productList}>
-        {showItems &&
-          itemList?.map((item, index) => {
-            return (
-              <Card
-                key={index}
-                setActiveItem={setActiveItem}
-                showItemsSwitch={showItemsSwitch}
-                item={item}
-              />
-            );
-          })}
-      </div>
-      {!showItems && (
-        <div className={styles.product_info}>
-          <img className={styles.product_img} src={itemInfo.image}></img>
-          <div>
-            <p>{itemInfo.title}</p>
-            <p>{itemInfo.price} EUR</p>
-            <p>{itemInfo.description}</p>
-            <p>{itemInfo.category}</p>
-          </div>
-          <span className={styles.back} onClick={showItemsSwitch}>
-            Back
-          </span>
-        </div>
-      )}
-    </>
+      <Routes>
+        <Route path='/' element={<Products />} />
+        <Route path='/profile' element={<span>profile</span>} />
+        <Route path='/login' element={<span>login</span>} />
+      </Routes>
+    </Router>
   );
 }
 
