@@ -13,6 +13,22 @@ const Login = () => {
   const enterPassword = (e) => {
     setPassword(e.target.value);
   };
+
+  const requestLogin = () => {
+    fetch('http://localhost:8080/api/login', {
+      method: 'POST',
+      // credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json', // Specify JSON content type
+      },
+      body: JSON.stringify({
+        login: login,
+        password: password,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  };
   return (
     <div className={styles.login_container}>
       <span className={styles.login_title}>Login</span>
@@ -29,7 +45,9 @@ const Login = () => {
         onChange={enterPassword}
         value={password}
       />
-      <span className={styles.login_submit}>Submit</span>
+      <span className={styles.login_submit} onClick={requestLogin}>
+        Submit
+      </span>
     </div>
   );
 };
