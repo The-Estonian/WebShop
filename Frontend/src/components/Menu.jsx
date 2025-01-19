@@ -23,6 +23,7 @@ const Menu = () => {
   const logOut = () => {
     LOGGEDIN = false;
   };
+  
   return (
     <div className={styles.menu}>
       <span className={styles.buttons}>
