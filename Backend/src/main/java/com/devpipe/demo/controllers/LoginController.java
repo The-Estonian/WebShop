@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.devpipe.demo.util.PasswordUtil;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
+
 @RestController
 @RequestMapping("/api/login")
 public class LoginController {
 
     @PostMapping
-    public Map<String, String> handleLogin(@RequestBody Map<String, String> credentials) {
+    public Map<String, String> handleLogin(@RequestBody Map<String, String> credentials, HttpServletResponse response) {
         // System.out.println("Username: " + credentials.get("login"));
         // System.out.println("Password: " + credentials.get("password"));
 
@@ -23,6 +26,16 @@ public class LoginController {
 
         if (credentials.get("login").equals(
                 "test@example.com") && PasswordUtil.matchPassword(rawPassword, hashedPassword)) {
+
+            String token = "generated-jwt-token";
+
+            Cookie cookie = new Cookie("devpipe_token", token);
+            cookie.setHttpOnly(true);
+            cookie.setSecure(false); // set to true in prod for https
+            cookie.setPath("/");
+            cookie.setMaxAge(24 * 60 * 60);
+            response.addCookie(cookie);
+
             return Map.of("login", "success");
         } else {
             return Map.of("login", "fail");

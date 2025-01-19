@@ -17,7 +17,7 @@ const Login = () => {
   const requestLogin = () => {
     fetch('http://localhost:8080/api/login', {
       method: 'POST',
-      // credentials: 'include',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json', // Specify JSON content type
       },
