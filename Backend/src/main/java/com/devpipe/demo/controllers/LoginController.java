@@ -31,7 +31,6 @@ public class LoginController {
                 "test@example.com") && PasswordUtil.matchPassword(rawPassword, hashedPassword)) {
 
             String token = jwtUtil.generateToken(credentials.get("login"));
-            System.out.println("TOKEN: " + token);
 
             Cookie cookie = new Cookie("devpipe_token", token);
             cookie.setHttpOnly(true);
