@@ -34,7 +34,11 @@ public class LoginController {
             cookie.setSecure(false); // set to true in prod for https
             cookie.setPath("/");
             cookie.setMaxAge(24 * 60 * 60);
-            response.addCookie(cookie);
+            response.addHeader("Set-Cookie", cookie.getName() + "=" + cookie.getValue() +
+                    "; HttpOnly; Secure=" + cookie.getSecure() +
+                    "; Path=" + cookie.getPath() +
+                    "; Max-Age=" + cookie.getMaxAge() +
+                    "; SameSite=Lax");
 
             return Map.of("login", "success");
         } else {
