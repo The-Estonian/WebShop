@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-
-
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 import styles from './Menu.module.css';
 
@@ -10,20 +8,44 @@ let LOGGEDIN = true;
 const Menu = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // check login
-    if (LOGGEDIN) {
-      setLoggedIn(true);
-    } else {
-      setLoggedIn(false);
-    }
+    fetch('http://localhost:8080/api/status', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.auth == 'success') {
+          setLoggedIn(true);
+        } else {
+          setLoggedIn(false);
+        }
+      });
   }, [location]);
 
   const logOut = () => {
-    LOGGEDIN = false;
+    setLoggedIn(false);
+    fetch('http://localhost:8080/api/logout', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.logout == 'success') {
+          setLoggedIn(false);
+          navigate('/login');
+        }
+      });
   };
-  
+
   return (
     <div className={styles.menu}>
       <span className={styles.buttons}>
