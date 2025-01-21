@@ -65,6 +65,13 @@ const Menu = () => {
           </NavLink>
         </span>
       )}
+      {!loggedIn && (
+        <span className={styles.buttons}>
+          <NavLink className={styles.button_link} to='/register'>
+            Register
+          </NavLink>
+        </span>
+      )}
       {loggedIn && (
         <span className={styles.buttons}>
           <NavLink className={styles.button_link} onClick={logOut} to='/'>

@@ -1,0 +1,38 @@
+.register_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20rem;
+  margin: auto;
+  margin-top: 10rem;
+}
+
+.register_title,
+.register_password {
+  padding: 0.5rem;
+}
+
+.register_submit {
+  margin: 0.5rem 0.1rem;
+  padding: 1rem 1.5rem;
+  border: 1px solid black;
+  cursor: pointer;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.register_input_error {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  background-color: red;
+}
+
+.register_submit:hover {
+  color: white;
+  background: black;
+}
+
+.register_input {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+}

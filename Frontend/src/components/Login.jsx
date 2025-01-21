@@ -38,7 +38,7 @@ const Login = () => {
   };
   return (
     <div className={styles.login_container}>
-      <span className={styles.login_title}>Login</span>
+      <span className={styles.login_title}>Email</span>
       <input
         className={styles.login_input}
         type='text'
