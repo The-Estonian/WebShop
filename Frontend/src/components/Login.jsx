@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './Login.module.css';
 
 const Login = () => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
 
   const enterLogin = (e) => {
     setLogin(e.target.value);
@@ -27,7 +30,11 @@ const Login = () => {
       }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        if (data.login == "success"){
+          navigate('/');
+        }
+      });
   };
   return (
     <div className={styles.login_container}>

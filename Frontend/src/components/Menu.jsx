@@ -3,8 +3,6 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 import styles from './Menu.module.css';
 
-let LOGGEDIN = true;
-
 const Menu = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const location = useLocation();
