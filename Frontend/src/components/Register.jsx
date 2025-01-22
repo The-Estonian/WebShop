@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './Register.module.css';
 
 const Register = () => {
-  const [login, setLogin] = useState('');
+  const [email, setEmail] = useState('');
   const [password1, setPassword1] = useState('');
   const [password2, setPassword2] = useState('');
   const [error, setError] = useState(false);
@@ -12,7 +12,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const enterLogin = (e) => {
-    setLogin(e.target.value);
+    setEmail(e.target.value);
   };
 
   const enterPassword1 = (e) => {
@@ -36,7 +36,7 @@ const Register = () => {
           'Content-Type': 'application/json', // Specify JSON content type
         },
         body: JSON.stringify({
-          login: login,
+          email: email,
           password: password1,
         }),
       })
@@ -57,7 +57,7 @@ const Register = () => {
         className={styles.register_input}
         type='text'
         onChange={enterLogin}
-        value={login}
+        value={email}
       />
       <span className={styles.register_password}>Password</span>
       <input
