@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.devpipe.demo.models.User;
 import com.devpipe.demo.services.UserService;
+import com.devpipe.demo.util.PasswordUtil;
 
 @RestController
 @RequestMapping("/api/register")
@@ -22,6 +23,7 @@ public class RegisterController {
 
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
+        user.setPassword(PasswordUtil.hashPassword(user.getPassword()));
         return ResponseEntity.ok(userService.saveUser(user));
     }
 

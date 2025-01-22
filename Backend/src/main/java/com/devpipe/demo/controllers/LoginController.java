@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.devpipe.demo.models.User;
+import com.devpipe.demo.services.UserService;
 import com.devpipe.demo.util.JwtUtil;
 import com.devpipe.demo.util.PasswordUtil;
 
@@ -17,6 +19,12 @@ import jakarta.servlet.http.HttpServletResponse;
 @RestController
 @RequestMapping("/api/login")
 public class LoginController {
+    private final UserService userService;
+
+    @Autowired
+    public LoginController(UserService userService) {
+        this.userService = userService;
+    }
 
     @Autowired
     private JwtUtil jwtUtil;
@@ -24,13 +32,10 @@ public class LoginController {
     @PostMapping
     public Map<String, String> handleLogin(@RequestBody Map<String, String> credentials, HttpServletResponse response) {
 
-        String rawPassword = "yourpassword";
-        String hashedPassword = PasswordUtil.hashPassword(credentials.get("password"));
-
-        if (credentials.get("login").equals(
-                "test@example.com") && PasswordUtil.matchPassword(rawPassword, hashedPassword)) {
-
-            String token = jwtUtil.generateToken(credentials.get("login"));
+        if (PasswordUtil.matchPassword(credentials.get("password"),
+                userService.getUserByEmail((credentials.get("email"))).getPassword())) {
+            System.out.println("ACCESS GRANTED!");
+            String token = jwtUtil.generateToken(credentials.get("email"));
 
             Cookie cookie = new Cookie("devpipe_token", token);
             cookie.setHttpOnly(true);

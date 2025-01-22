@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
 
 const Login = () => {
-  const [login, setLogin] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const navigate = useNavigate();
 
-  const enterLogin = (e) => {
-    setLogin(e.target.value);
+  const enterEmail = (e) => {
+    setEmail(e.target.value);
   };
 
   const enterPassword = (e) => {
@@ -25,7 +25,7 @@ const Login = () => {
         'Content-Type': 'application/json', // Specify JSON content type
       },
       body: JSON.stringify({
-        login: login,
+        email: email,
         password: password,
       }),
     })
@@ -42,8 +42,8 @@ const Login = () => {
       <input
         className={styles.login_input}
         type='text'
-        onChange={enterLogin}
-        value={login}
+        onChange={enterEmail}
+        value={email}
       />
       <span className={styles.login_password}>Password</span>
       <input
