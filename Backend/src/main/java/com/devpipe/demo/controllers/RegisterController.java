@@ -1,5 +1,7 @@
 package com.devpipe.demo.controllers;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,9 +24,10 @@ public class RegisterController {
     }
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+    public ResponseEntity<?> createUser(@RequestBody User user) {
         user.setPassword(PasswordUtil.hashPassword(user.getPassword()));
-        return ResponseEntity.ok(userService.saveUser(user));
+        userService.saveUser(user);
+        return ResponseEntity.ok(Map.of("register", "success"));
     }
 
 }

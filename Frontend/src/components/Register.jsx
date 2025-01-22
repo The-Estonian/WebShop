@@ -42,7 +42,7 @@ const Register = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          if (data.login == 'success') {
+          if (data.register == 'success') {
             navigate('/');
           }
         });
