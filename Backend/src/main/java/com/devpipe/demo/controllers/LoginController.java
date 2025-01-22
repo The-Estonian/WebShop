@@ -20,20 +20,24 @@ import jakarta.servlet.http.HttpServletResponse;
 @RequestMapping("/api/login")
 public class LoginController {
     private final UserService userService;
-
-    @Autowired
-    public LoginController(UserService userService) {
-        this.userService = userService;
-    }
-
-    @Autowired
     private JwtUtil jwtUtil;
+
+    @Autowired
+    public LoginController(UserService userService, JwtUtil jwtUtil) {
+        this.userService = userService;
+        this.jwtUtil = jwtUtil;
+    }
 
     @PostMapping
     public Map<String, String> handleLogin(@RequestBody Map<String, String> credentials, HttpServletResponse response) {
 
+        User user = userService.getUserByEmail((credentials.get("email")));
+        if (user == null) {
+            return Map.of("login", "fail", "message", "User not found");
+        }
+
         if (PasswordUtil.matchPassword(credentials.get("password"),
-                userService.getUserByEmail((credentials.get("email"))).getPassword())) {
+                user.getPassword())) {
             System.out.println("ACCESS GRANTED!");
             String token = jwtUtil.generateToken(credentials.get("email"));
 
@@ -50,7 +54,7 @@ public class LoginController {
 
             return Map.of("login", "success");
         } else {
-            return Map.of("login", "fail");
+            return Map.of("login", "fail", "message", "Invalid email or password");
         }
     }
 
