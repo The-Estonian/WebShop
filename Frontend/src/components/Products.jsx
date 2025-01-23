@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import Card from './Card';
 
 import styles from './Products.module.css';
 
-const Products = () => {
+const Products = ({ setCartItems }) => {
   const [itemList, setItemList] = useState([]);
   const [itemInfo, setItemInfo] = useState({});
   const [showItems, setShowItems] = useState(true);
@@ -20,6 +21,10 @@ const Products = () => {
 
   const showItemsSwitch = () => {
     setShowItems(!showItems);
+  };
+
+  const addToCartTrigger = () => {
+    setCartItems((prev) => [...prev, itemInfo]);
   };
 
   const setActiveItem = (item) => {
@@ -52,10 +57,17 @@ const Products = () => {
           <span className={styles.buttons} onClick={showItemsSwitch}>
             Back
           </span>
+          <span className={styles.buttons} onClick={addToCartTrigger}>
+            ADD TO CART
+          </span>
         </div>
       )}
     </>
   );
+};
+
+Products.propTypes = {
+  setCartItems: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Products;

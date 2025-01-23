@@ -1,0 +1,21 @@
+.cart_container{
+    display: flex;
+}
+
+.product_img {
+  height: 20rem;
+  width: auto;
+  margin: auto;
+}
+
+.productList {
+  margin-top: 1rem;
+  display: flex;
+  flex-flow: wrap;
+}
+
+.cart_title{
+    margin: auto;
+    margin-top: 1rem;
+    font-size: 1.3rem;
+}

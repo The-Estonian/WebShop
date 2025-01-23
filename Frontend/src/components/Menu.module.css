@@ -5,13 +5,15 @@
 }
 
 .buttons {
+  
   padding: 1rem 0.2rem;
 }
 
 .button_link {
+  
   color: inherit;
   text-decoration: none;
-  padding: 1rem 1.5rem;
+  padding: 1rem;
   border: 1px solid black;
   cursor: pointer;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -20,4 +22,11 @@
 .button_link:hover {
   color: white;
   background: black;
+}
+
+.button_link_amount{
+  margin-right: 0.2rem;
+  color: red;
+  border-radius: 50%;
+  padding: 0.5rem;
 }

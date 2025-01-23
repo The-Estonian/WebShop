@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import styles from './Menu.module.css';
 
-const Menu = () => {
+const Menu = ({ cartItems }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -79,8 +80,20 @@ const Menu = () => {
           </NavLink>
         </span>
       )}
+      {loggedIn && (
+        <span className={styles.buttons}>
+          <NavLink className={styles.button_link} to='/cart'>
+            <span className={styles.button_link_amount} >{cartItems.length}</span>
+            <span>Cart</span>
+          </NavLink>
+        </span>
+      )}
     </div>
   );
+};
+
+Menu.propTypes = {
+  cartItems: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Menu;
