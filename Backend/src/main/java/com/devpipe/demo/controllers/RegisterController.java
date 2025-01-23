@@ -25,9 +25,14 @@ public class RegisterController {
 
     @PostMapping
     public ResponseEntity<?> createUser(@RequestBody User user) {
-        user.setPassword(PasswordUtil.hashPassword(user.getPassword()));
-        userService.saveUser(user);
-        return ResponseEntity.ok(Map.of("register", "success"));
+        User checkEmail = userService.getUserByEmail(user.getEmail());
+        if (checkEmail == null) {
+            user.setPassword(PasswordUtil.hashPassword(user.getPassword()));
+            userService.saveUser(user);
+            return ResponseEntity.ok(Map.of("register", "success"));
+        } else {
+            return ResponseEntity.ok(Map.of("register", "fail", "message", "Email already taken!"));
+        }
     }
 
 }

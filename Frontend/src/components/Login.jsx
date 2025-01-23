@@ -6,6 +6,8 @@ import styles from './Login.module.css';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const navigate = useNavigate();
 
@@ -31,8 +33,11 @@ const Login = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data.login == "success"){
+        if (data.login == 'success') {
           navigate('/');
+        } else {
+          setError(true);
+          setErrorMessage(data.message);
         }
       });
   };
@@ -55,6 +60,7 @@ const Login = () => {
       <span className={styles.login_submit} onClick={requestLogin}>
         Submit
       </span>
+      {error && <span className={styles.login_error}>{errorMessage}</span>}
     </div>
   );
 };

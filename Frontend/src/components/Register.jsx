@@ -7,7 +7,9 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password1, setPassword1] = useState('');
   const [password2, setPassword2] = useState('');
-  const [error, setError] = useState(false);
+  const [error, setError] = useState('');
+  const [inputError, setInputError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const navigate = useNavigate();
 
@@ -21,14 +23,14 @@ const Register = () => {
   const enterPassword2 = (e) => {
     setPassword2(e.target.value);
     if (password1 != e.target.value) {
-      setError(true);
+      setInputError(true);
     } else {
-      setError(false);
+      setInputError(false);
     }
   };
 
   const requestRegister = () => {
-    if (!error) {
+    if (!inputError) {
       fetch('http://localhost:8080/api/register', {
         method: 'POST',
         credentials: 'include',
@@ -44,10 +46,13 @@ const Register = () => {
         .then((data) => {
           if (data.register == 'success') {
             navigate('/');
+          } else {
+            setError(true);
+            setErrorMessage(data.message);
           }
         });
     } else {
-      console.log('Error registering, do the passwords match?');
+      console.log('Input data error');
     }
   };
   return (
@@ -67,7 +72,9 @@ const Register = () => {
         value={password1}
       />
       <input
-        className={error ? styles.register_input_error : styles.register_input}
+        className={
+          inputError ? styles.register_input_error : styles.register_input
+        }
         type='password'
         onChange={enterPassword2}
         value={password2}
@@ -75,6 +82,7 @@ const Register = () => {
       <span className={styles.register_submit} onClick={requestRegister}>
         Register
       </span>
+      {error && <span className={styles.register_error}>{errorMessage}</span>}
     </div>
   );
 };

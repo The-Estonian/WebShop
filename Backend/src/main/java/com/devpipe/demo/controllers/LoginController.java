@@ -38,7 +38,6 @@ public class LoginController {
 
         if (PasswordUtil.matchPassword(credentials.get("password"),
                 user.getPassword())) {
-            System.out.println("ACCESS GRANTED!");
             String token = jwtUtil.generateToken(credentials.get("email"));
 
             Cookie cookie = new Cookie("devpipe_token", token);
