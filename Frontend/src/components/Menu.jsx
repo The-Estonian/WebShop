@@ -81,7 +81,7 @@ const Menu = ({ cartItems }) => {
         </span>
       )}
       {loggedIn && (
-        <span className={styles.buttons}>
+        <span className={styles.buttons_cart}>
           <NavLink className={styles.button_link} to='/cart'>
             <span className={styles.button_link_amount} >{cartItems.length}</span>
             <span>Cart</span>
