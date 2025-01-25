@@ -45,40 +45,44 @@ To run the project locally, follow these steps:
    cd WebShop
    ```
 
-2. **Run the backend**:
+2. **Pull and run Docker postgreSQL DB**:
 
    - Open the first terminal
 
    ```bash
+   cd PostgreSQL
+   # This will download and run PostgreSQL DB in Docker
+   run the build.bat script
+   ```
+
+3. **Run the backend and fill the DB with Models**:
+
+   ```bash
+   cd..
    cd backend
    java spring-boot:run
    ```
 
-3. **Run the frontend**:
+4. **Run the bootstrapDB.py script to fill the DB**:
+
+   - Open the first terminal
+
+   ```bash
+   cd..
+   cd PostgreSQL
+   python bootstrapDB.py
+   ```
+
+5. **Run the frontend**:
 
    - Open the second terminal
 
    ```bash
+   cd..
    cd frontend
    npm install
    npm run dev
    ```
-
-4. **Fill the DB**:
-
-   - Open the third terminal
-
-   ```bash
-    cd PostgreSQL
-
-    # This will download and run PostgreSQL DB in Docker
-    run the build.bat script
-
-    # This will run a python script to pull dummy items from internet and push them into the PostgreSQL DB
-    run the bootstreapDB.py
-   ```
-
-Note:
 
 ## Screenshots
 

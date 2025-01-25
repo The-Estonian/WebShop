@@ -41,3 +41,5 @@ def addFiftyColorsToDB():
                 print(f"Item nr: {index} sent to DB!")
         else:
             print(f"Failed to fetch data. HTTP Status code: {response.status_code}")
+
+addTwentyProductsToDB()

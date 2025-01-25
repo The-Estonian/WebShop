@@ -9,4 +9,4 @@ docker pull %IMAGE_NAME%
 
 :: Run the Docker container
 echo Running Docker container %CONTAINER_NAME%...
-docker run -d --name %CONTAINER_NAME% -p 5432:5432 --network devpipe_network --env-file .env %IMAGE_NAME%
+docker run -d --name %CONTAINER_NAME% -p 5432:5432 --env-file .env %IMAGE_NAME%
