@@ -67,7 +67,7 @@ const Products = ({ setCartItems }) => {
 };
 
 Products.propTypes = {
-  setCartItems: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setCartItems: PropTypes.func.isRequired,
 };
 
 export default Products;
