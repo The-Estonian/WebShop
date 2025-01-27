@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import ToDoCard from './ToDoCard';
 import AddToDo from './AddToDo';
@@ -7,9 +7,25 @@ import styles from './ToDo.module.css';
 
 const ToDo = () => {
   const [toDoList, setToDoList] = useState([
-    { id: 1, todo: 'woof', done: false },
-    { id: 2, todo: 'poof', done: true },
+    // { id: 1, todo: 'woof', done: false },
+    // { id: 2, todo: 'poof', done: true },
   ]);
+
+  useEffect(() => {
+    fetch('http://localhost:8080/api/todos', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+
+        setToDoList(data.todoList);
+      });
+  }, []);
 
   const todoSwitch = (id) => {
     // change todo status in backend
