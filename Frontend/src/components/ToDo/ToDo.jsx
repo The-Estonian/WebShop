@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import ToDoCard from './ToDoCard';
+import AddToDo from './AddToDo';
 
 import styles from './ToDo.module.css';
 
@@ -24,13 +25,20 @@ const ToDo = () => {
   };
 
   const removeTodo = (id) => {
-    // remove todo status in backend
+    // remove todo from backend
 
-    // remove todo status in frontend
+    // remove todo in frontend
     let newList = toDoList.filter((item) => item.id !== id);
     console.log(newList);
-    
+
     setToDoList(newList);
+  };
+
+  const addTodo = (input) => {
+    // send todo to backend
+
+    // add todo in frontend
+    setToDoList((prev) => [...prev, { todo: input, done: false }]);
   };
 
   return (
@@ -45,6 +53,7 @@ const ToDo = () => {
           />
         );
       })}
+      <AddToDo addTodo={addTodo} />
     </div>
   );
 };
