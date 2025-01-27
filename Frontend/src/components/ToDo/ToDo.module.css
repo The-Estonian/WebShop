@@ -4,31 +4,4 @@
   margin: auto;
 }
 
-.todo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid black;
-  height: 2rem;
-  margin: 0.25rem;
-}
 
-.todo_text {
-  padding: 0.5rem;
-}
-
-.todo_done {
-  height: 100%;
-  width: 2rem;
-  background: greenyellow;
-  padding: 0.5rem;
-  margin-right: auto;
-}
-
-.todo_notDone {
-  height: 100%;
-  width: 2rem;
-  background: rgb(236, 39, 39);
-  padding: 0.5rem;
-  margin-right: auto;
-}

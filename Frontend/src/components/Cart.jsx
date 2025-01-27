@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import styles from './Cart.module.css';
 
-import Card from './Card';
+import Card from './Products/Card';
 
 const Cart = ({ cartItems }) => {
   return (

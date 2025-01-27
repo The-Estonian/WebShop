@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import ToDoCard from './ToDoCard';
+
 import styles from './ToDo.module.css';
 
 const ToDo = () => {
@@ -24,16 +26,7 @@ const ToDo = () => {
   return (
     <div className={styles.todo_container}>
       {toDoList.map((todo, index) => {
-        let todoStatus = todo.done ? styles.todo_done : styles.todo_notDone;
-        return (
-          <div key={index} className={styles.todo}>
-            <span
-              className={todoStatus}
-              onClick={() => todoSwitch(todo.id)}
-            ></span>
-            <span className={styles.todo_text}>{todo.todo}</span>
-          </div>
-        );
+        return <ToDoCard key={index} todo={todo} todoSwitch={todoSwitch} />;
       })}
     </div>
   );

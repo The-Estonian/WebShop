@@ -1,0 +1,48 @@
+.todo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  height: 2rem;
+  margin: 0.12rem;
+
+  user-select: none;
+  -webkit-user-select: none; /* For Safari */
+  -moz-user-select: none; /* For Firefox */
+  -ms-user-select: none;
+
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgb(145, 92, 182);
+  padding: 15px 40px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
+
+  cursor: pointer;
+}
+
+.todo:hover {
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 5px 15px rgba(145, 92, 182, 0.4);
+}
+
+.todo_text {
+  padding: 0.5rem;
+}
+
+.todo_done {
+  height: 100%;
+  width: 2rem;
+  background: greenyellow;
+  padding: 0.5rem;
+  margin-right: auto;
+}
+
+.todo_notDone {
+  height: 100%;
+  width: 2rem;
+  background: rgb(236, 39, 39);
+  padding: 0.5rem;
+  margin-right: auto;
+}

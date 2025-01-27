@@ -47,6 +47,13 @@ const Menu = ({ cartItems }) => {
 
   return (
     <div className={styles.menu}>
+      {loggedIn && (
+        <span className={styles.buttons}>
+          <NavLink className={styles.button_link} to='/todo'>
+            To-Do
+          </NavLink>
+        </span>
+      )}
       <span className={styles.buttons}>
         <NavLink className={styles.button_link} to='/'>
           Products
@@ -83,7 +90,9 @@ const Menu = ({ cartItems }) => {
       {loggedIn && (
         <span className={styles.buttons_cart}>
           <NavLink className={styles.button_link} to='/cart'>
-            <span className={styles.button_link_amount} >{cartItems.length}</span>
+            <span className={styles.button_link_amount}>
+              {cartItems.length}
+            </span>
             <span>Cart</span>
           </NavLink>
         </span>
