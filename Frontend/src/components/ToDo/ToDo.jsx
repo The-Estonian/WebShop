@@ -23,10 +23,27 @@ const ToDo = () => {
     setToDoList(newList);
   };
 
+  const removeTodo = (id) => {
+    // remove todo status in backend
+
+    // remove todo status in frontend
+    let newList = toDoList.filter((item) => item.id !== id);
+    console.log(newList);
+    
+    setToDoList(newList);
+  };
+
   return (
     <div className={styles.todo_container}>
-      {toDoList.map((todo, index) => {
-        return <ToDoCard key={index} todo={todo} todoSwitch={todoSwitch} />;
+      {toDoList.map((todo) => {
+        return (
+          <ToDoCard
+            key={todo.id}
+            todo={todo}
+            todoSwitch={todoSwitch}
+            removeTodo={removeTodo}
+          />
+        );
       })}
     </div>
   );
